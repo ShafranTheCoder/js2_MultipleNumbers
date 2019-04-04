@@ -6,22 +6,27 @@ let inputNumber;
 
 function numberAsking() {
     inputNumber = prompt('Write number');
-    inputNumber = parseFloat(inputNumber);
+    inputNumber = parseInt(inputNumber);
 }
+
 function numberChecking() {
-    while (true) {
-        if(Number.isInteger(inputNumber)){
-            alert("You wrote integer value");
-            return;
-        } else {
+    while (inputNumber !== "" || inputNumber !== null) {
+        if (isNaN(inputNumber)) {
             alert("Write integer value");
             numberAsking();
+        } else {
+            alert("You wrote integer value. All is fine");
+            return;
         }
     }
 }
+
 function primaryChecking() {
-    for (let i = 1; i <= inputNumber; i++){
-        if (i%5 === 0) {
+    numberAsking();
+    numberChecking();
+
+    for (let i = 1; i <= inputNumber; i++) {
+        if (i % 5 === 0) {
             list.push(i);
         }
     }
@@ -30,9 +35,9 @@ function primaryChecking() {
     } else {
         alert(list);
     }
+
 }
-numberAsking();
-numberChecking();
+
 primaryChecking();
 
 
@@ -49,7 +54,7 @@ function inputValues() {
 
 function checkingErrors() {
     while (true) {
-        if(Number.isInteger(m) && Number.isInteger(n)){
+        if (Number.isInteger(m) && Number.isInteger(n)) {
             alert("All is fine");
             return;
         } else {
@@ -58,16 +63,17 @@ function checkingErrors() {
         }
     }
 }
+
 function primaryAllChecking() {
-    for (let i = m; i<= n; i++) {
-        array[i] = i+1;
+    for (let i = m; i <= n; i++) {
+        array[i] = i + 1;
     }
     //alert(array);
     let primeNumbers = [];
     let primeNumber = 2;
     primeNumbers.push(primeNumber);
     while (primeNumber < array.length) {
-        for (let i=0; i<array.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             if (array[i] % primeNumber === 0) {
                 delete array[i];
             }
@@ -79,7 +85,6 @@ function primaryAllChecking() {
     }
     alert("PrimaryNumbers: " + primeNumbers);
 }
-inputValues();
-checkingErrors();
-primaryAllChecking();
-
+// inputValues();
+// checkingErrors();
+// primaryAllChecking();
